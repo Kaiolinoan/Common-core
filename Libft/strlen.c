@@ -1,8 +1,8 @@
 #include <string.h>
 #include <stdio.h>
-unsigned long ft_strlen(const char *str) //A funcao tem que ser do tipo int ou size_t??
+size_t ft_strlen(const char *str) //A funcao tem que ser do tipo int ou size_t??
 {
-    int i = 0;
+    size_t i = 0;
     while(str[i])
         i++;
     return(i);
