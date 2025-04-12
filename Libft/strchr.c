@@ -3,7 +3,7 @@
 
 char *ft_strchr(const char *str, int c)
 {
-    int i = 0;
+    size_t i = 0;
     while(str[i])
     {
         if(str[i] == (char)c)
@@ -18,8 +18,8 @@ char *ft_strchr(const char *str, int c)
 int main()
 {
     char str[] = "oloiasoda a";
-    int x = 0;
-     printf("%p\n", ft_strchr(str, x));
-     printf("%p\n", strchr(str, x));
+    int x = 'i';
+     printf("%s\n", ft_strchr(str, x));
+     printf("%s\n", strchr(str, x));
     
 }
