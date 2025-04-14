@@ -1,38 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_memcmpr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: klino-an <klino-an@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/10 12:38:39 by klino-an          #+#    #+#             */
-/*   Updated: 2025/04/14 15:04:58 by klino-an         ###   ########.fr       */
+/*   Created: 2025/04/14 11:19:53 by klino-an          #+#    #+#             */
+/*   Updated: 2025/04/14 12:51:59 by klino-an         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strncmp(const char s1[], const char s2[], size_t n)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	size_t	i;
+	unsigned char	*str1_pointer;
+	unsigned char	*str2_pointer;
+	size_t			i;
 
+	str1_pointer = (unsigned char *)s1;
+	str2_pointer = (unsigned char *)s2;
 	i = 0;
-	while ((s1[i] != '\0' || s2[i] != '\0') && (i < n))
+	while (i < n)
 	{
-		if (s1[i] == s2[i])
-			i++;
-		else
-			return ((unsigned char )s1[i] - (unsigned char)s2[i]);
+		if (str1_pointer[i] != str2_pointer[i])
+			return (str1_pointer[i] - str2_pointer[i]);
+		i++;
 	}
 	return (0);
 }
 
 /* int main()
 {
-	char s1[] = "ola";
-	char s2[] = "olA";
-	int x = 3;
+	char str1[] = "ola";
+	char str2[] = "olaaa";
 
-	printf("%d\n", ft_strncmp(s1, s2, x));
-	printf("%d\n", strncmp(s1, s2, x));
+	printf("%d\n", ft_memcmp(str1, str2, 3));
+	printf("%d\n", memcmp(str1, str2, 3));
 } */

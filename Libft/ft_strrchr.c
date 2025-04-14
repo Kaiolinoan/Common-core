@@ -6,7 +6,7 @@
 /*   By: klino-an <klino-an@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 12:38:39 by klino-an          #+#    #+#             */
-/*   Updated: 2025/04/11 12:45:04 by klino-an         ###   ########.fr       */
+/*   Updated: 2025/04/14 14:11:57 by klino-an         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char	*ft_strrchr(const char *str, int c)
 	int	i;
 
 	i = ft_strlen(str);
-	while (str[i] >= 0)
+	while (i >= 0)
 	{
 		if (str[i] == (char)c)
 			return ((char *)&str[i]);

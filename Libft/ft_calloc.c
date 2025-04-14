@@ -6,7 +6,7 @@
 /*   By: klino-an <klino-an@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 11:25:57 by klino-an          #+#    #+#             */
-/*   Updated: 2025/04/14 12:26:06 by klino-an         ###   ########.fr       */
+/*   Updated: 2025/04/14 17:31:15 by klino-an         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,17 @@
 void	*ft_calloc(size_t num, size_t size)
 {
 	void	*p;
+	
 
 	if (num == 0 || size == 0)
-        p = malloc(1);
-    else
-        p = malloc(num * size);
-    if (!p)
-	return (NULL);
-    ft_bzero(p, num * size);
+		p = malloc(1);
+	else if (num  <= ((size_t) - 1) / size)
+		p = malloc(num * size);
+	else 
+		return (NULL);
+	if (!p)
+		return (NULL);
+	ft_bzero(p, num * size);
 	return (p);
 }
 
@@ -52,7 +55,7 @@ void	*ft_calloc(size_t num, size_t size)
 	printf ("Comparacao:\n");
 	if (memcmp(arr, arr2, 5) == 0)
 		printf ("certo!");
-	else 
+	else
 		printf("errado!");
 	free(arr);
 

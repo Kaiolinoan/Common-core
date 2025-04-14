@@ -6,13 +6,13 @@
 /*   By: klino-an <klino-an@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 12:38:39 by klino-an          #+#    #+#             */
-/*   Updated: 2025/04/11 12:45:07 by klino-an         ###   ########.fr       */
+/*   Updated: 2025/04/14 12:56:28 by klino-an         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_digit(int c)
+int	ft_isdigit(int c)
 {
 	if ((c >= '0' && c <= '9'))
 		return (2048);
