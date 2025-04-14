@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
@@ -13,11 +12,6 @@
 
 #include "libft.h"
 
-=======
-//#include "libft.h"
-#include <string.h>
-#include <stdio.h>
->>>>>>> 55adfc811df765c82284f51d9494c9634c0baf05
 
 
 void *ft_memchr(const void *s, int c, size_t n)
@@ -40,16 +34,9 @@ void *ft_memchr(const void *s, int c, size_t n)
 
 /* int main()
 {
-<<<<<<< HEAD
    char str[] = "eu vou procurar uma letra nessa string";
 
     printf("%s\n", (char *)memchr(str, 'v', strlen(str)));
     printf("%s\n", (char *)ft_memchr(str, 'v', strlen(str)));
 }
 } */
-=======
-    char str[] = "eu vou procurar uma letra nessa string";
-
-    printf("%s", ft_memchr(str, 'v', strlen(str)));
-} */
->>>>>>> 55adfc811df765c82284f51d9494c9634c0baf05

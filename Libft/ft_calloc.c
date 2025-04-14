@@ -6,7 +6,7 @@
 /*   By: klino-an <klino-an@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 11:25:57 by klino-an          #+#    #+#             */
-/*   Updated: 2025/04/14 11:50:57 by klino-an         ###   ########.fr       */
+/*   Updated: 2025/04/14 12:26:06 by klino-an         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,26 +17,43 @@ void	*ft_calloc(size_t num, size_t size)
 	void	*p;
 
 	if (num == 0 || size == 0)
-		return (NULL);
-	p = malloc(num * size);
-	if (!p)
-		return (NULL);
-	ft_bzero(p, num * size);
+        p = malloc(1);
+    else
+        p = malloc(num * size);
+    if (!p)
+	return (NULL);
+    ft_bzero(p, num * size);
 	return (p);
 }
 
 /* int	main(void)
 {
-    int i = 0;
-	int *arr = (int *)ft_calloc(10, sizeof(int));
+ int temp = 5;
+	printf ("Calloc\n");
+	int i = 0;
+	int *arr = (int *)calloc(temp, 0);
 	if (!arr)
 		return (1);
-	while (i < 10)
+	while (i < 5)
 	{
 		printf("arr[%d] = %d\n", i, arr[i]);
 		i++;
 	}
+	printf ("ft_calloc\n");
+	int *arr2 = (int *)ft_calloc(0, 0);
+	if (!arr2)
+		return (1);
+	i = 0;
+	while (i < 5)
+	{
+		printf("arr[%d] = %d\n", i, arr[i]);
+		i++;
+	}
+	printf ("Comparacao:\n");
+	if (memcmp(arr, arr2, 5) == 0)
+		printf ("certo!");
+	else 
+		printf("errado!");
 	free(arr);
-	return (0);
 
 } */
