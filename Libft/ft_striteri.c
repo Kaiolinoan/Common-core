@@ -1,38 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: klino-an <klino-an@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/10 12:38:39 by klino-an          #+#    #+#             */
-/*   Updated: 2025/04/17 18:43:39 by klino-an         ###   ########.fr       */
+/*   Created: 2025/04/17 17:19:32 by klino-an          #+#    #+#             */
+/*   Updated: 2025/04/17 17:52:00 by klino-an         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strncmp(const char s1[], const char s2[], size_t n)
+void ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
-	size_t	i;
+    unsigned int i;
 
-	i = 0;
-	while ((s1[i] != '\0' || s2[i] != '\0') && (i < n))
-	{
-		if (s1[i] == s2[i])
-			i++;
-		else
-			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
-	}
-	return (0);
+    i = 0;
+    if (s != NULL)
+    {
+        while (s[i])
+        {
+             (f)(i, &s[i]);
+             i++; 
+        }
+    }
 }
 
-/* int main()
+/* 
+static void sla_function(unsigned int n, char *c)
 {
-	char s1[] = "ola";
-	char s2[] = "olA";
-	int x = 3;
+    *c = *c + n;
+}
 
-	printf("%d\n", ft_strncmp(s1, s2, x));
-	printf("%d\n", strncmp(s1, s2, x));
-} */
+ int main ()
+{
+    char str[] = "ola";
+    printf ("Antes: %s\n", str);
+	ft_striteri(str, sla_function);
+    printf ("Depois: %s\n", str);
+}
+ */

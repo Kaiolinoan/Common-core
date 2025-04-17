@@ -6,13 +6,13 @@
 /*   By: klino-an <klino-an@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 12:38:39 by klino-an          #+#    #+#             */
-/*   Updated: 2025/04/11 12:45:04 by klino-an         ###   ########.fr       */
+/*   Updated: 2025/04/15 18:48:04 by klino-an         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnstr(char str[], char to_find[], size_t n)
+char	*ft_strnstr(const char *str, const char *to_find, size_t n)
 {
 	size_t	i;
 	size_t	j;

@@ -6,7 +6,7 @@
 /*   By: klino-an <klino-an@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 11:25:57 by klino-an          #+#    #+#             */
-/*   Updated: 2025/04/14 17:31:15 by klino-an         ###   ########.fr       */
+/*   Updated: 2025/04/15 12:11:38 by klino-an         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,12 @@
 void	*ft_calloc(size_t num, size_t size)
 {
 	void	*p;
-	
 
 	if (num == 0 || size == 0)
 		p = malloc(1);
-	else if (num  <= ((size_t) - 1) / size)
+	else if (num <= ((size_t)-1) / size)
 		p = malloc(num * size);
-	else 
+	else
 		return (NULL);
 	if (!p)
 		return (NULL);

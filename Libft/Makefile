@@ -1,7 +1,7 @@
 NAME = libft.a
 CC = cc
 CFLAGS = -Werror -Wall -Wextra -g
-SRCS = $(filter-out main.c, $(wildcard *.c))
+SRCS = $(filter-out main.c, $(wildcard *.c)) #APAGAR O WILD CARD
 OBJS = $(SRCS:.c=.o)
 MAIN = main
 
@@ -14,7 +14,7 @@ $(NAME): $(OBJS)
 
 
 $(MAIN): $(NAME)
-	@$(CC) $(CFLAGS) -I. $(MAIN).c -L. -lft $< -o $@
+	@$(CC) $(CFLAGS) -I. $(MAIN).c -L. -lft $< -o $@ && ./$(MAIN)
 	@echo 'Main compilado!'
 
 
