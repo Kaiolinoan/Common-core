@@ -12,22 +12,20 @@
 
 #include "libft.h"
 
-/* size_t ft_substrlen(char const *s, char c)
+static void free_mem(char **str, size_t count)
 {
     size_t i;
+
     i = 0;
-    while (s[i])
+    while (i < count)
     {
-        if (s[i] == c)
-            i++;
-        if (s[i + 1] != c)
-            i++;
-        if (s[i] != c && s[i + 1] == c)
-            i++;
+        free(str[i]);
+        i++;
     }
-    return (i);
-} */
-static void fill_arr(char **str,char const *s, size_t count, char c)
+    free (str);
+}
+
+static void fill_arr(char **str, char const *s, size_t count, char c)
 {
     size_t i;
     size_t arr_i;
@@ -48,7 +46,7 @@ static void fill_arr(char **str,char const *s, size_t count, char c)
     str[mat_index] = NULL;
 }
 
-static void split_str(char **str, char const *s, size_t count, char c)
+static int split_str(char **str, char const *s, size_t count, char c)
 {
     size_t i;
     size_t arr_i;
@@ -62,14 +60,19 @@ static void split_str(char **str, char const *s, size_t count, char c)
         while(s[i] && s[i] == c)
             i++;
         while(s[i] && s[i] != c)
-            arr_i++;
-        str[mat_index] =(char *) malloc((arr_i + 1) * sizeof(char));
-        if(!str[arr_i++])
         {
-            str = NULL;
-            break;
+            arr_i++;
+            i++;
         }
+        str[mat_index] =(char *) malloc((arr_i + 1) * sizeof(char));
+        if(!str[mat_index])
+        {
+            free_mem(str, count);
+            return (0);
+        }
+        mat_index++;
     }
+    return (1);
 }
 
 static  size_t count_words (char const *s, char c)
@@ -81,17 +84,14 @@ static  size_t count_words (char const *s, char c)
     count = 0;
     while (s[i])
     {
-        if (s[i] == c)
+        while (s[i] == c)
             i++;
-        if (s[i + 1] != c)
-            i++;
-        if (s[i] != c && s[i + 1] == c)
+        if (s[i] && s[i] != c)
         {
             count++;
-            i++;
+            while (s[i] && s[i] != c)
+                i++;
         }
-        if(s[i] != c && s[i + 1] == '\0')
-            count++;
     }
     return (count);
 }
@@ -100,22 +100,22 @@ char **ft_split(char const *s, char c)
 {
     char **matriz;
     size_t  total_words;
-    total_words = count_words(s, c);
+
     if (!s)
         return (NULL);
-    matriz = (char**)malloc(total_words * sizeof(char *) + 1);
+    total_words = count_words(s, c);
+    matriz = (char**)malloc((total_words + 1) * sizeof(char *));
     if(!matriz)
         return (NULL);
-    split_str(matriz, s, total_words, c);
-    if (matriz == NULL)
+    if (!split_str(matriz, s, total_words, c))
         return (NULL);
     fill_arr(matriz, s, total_words, c);    
     return (matriz);
 }
 
-int main()
+/* int main()
 {
     char str[] = "banana, uva, maca, pera";
     char **matriz = ft_split(str, ',');
    printf("%s", matriz[0]);
-}
+} */
