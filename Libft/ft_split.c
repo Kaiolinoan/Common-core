@@ -115,7 +115,6 @@ char **ft_split(char const *s, char c)
 
 /* int main()
 {
-<<<<<<< HEAD
   	char str[] = ",,,,,banana,,,,uva,,,,,,maca,,,pera,,,,,";
 	char set = ',';
     char **matriz = ft_split(str, set);
@@ -126,9 +125,3 @@ char **ft_split(char const *s, char c)
 		i++;
 	}
 } */
-=======
-    char str[] = "banana, uva, maca, pera";
-    char **matriz = ft_split(str, ',');
-   printf("%s", matriz[0]);
-} */
->>>>>>> e497cd6860d1f7a9de3a28866562bd688687d3d0
