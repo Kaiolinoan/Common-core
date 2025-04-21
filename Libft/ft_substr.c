@@ -6,7 +6,7 @@
 /*   By: klino-an <klino-an@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 11:37:17 by klino-an          #+#    #+#             */
-/*   Updated: 2025/04/15 18:34:27 by klino-an         ###   ########.fr       */
+/*   Updated: 2025/04/21 19:10:57 by klino-an         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	size_t	count;
 	char	*sub;
 
-	if (*s == '\0' || start > ft_strlen(s) || len == 0)
+	if (*s == '\0' || start > ft_strlen(s) || len == 0 || !s)
 		return (ft_strdup(""));
 	count = 0;
 	while (count < len && s[start + count])

@@ -6,7 +6,7 @@
 /*   By: klino-an <klino-an@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 12:38:39 by klino-an          #+#    #+#             */
-/*   Updated: 2025/04/11 12:53:32 by klino-an         ###   ########.fr       */
+/*   Updated: 2025/04/21 15:33:46 by klino-an         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ size_t	ft_strlcat(char dst[], const char *src, size_t size)
 	i = 0;
 	if (size <= ldst)
 		return (size + lsrc);
-	while ((ldst + i < size - 1) && src[i] != '\0')
+	while (src[i] && (ldst + i < size - 1))
 	{
 		dst[ldst + i] = src[i];
 		i++;

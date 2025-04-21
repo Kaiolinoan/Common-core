@@ -6,7 +6,7 @@
 /*   By: klino-an <klino-an@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 15:19:02 by klino-an          #+#    #+#             */
-/*   Updated: 2025/04/17 17:01:30 by klino-an         ###   ########.fr       */
+/*   Updated: 2025/04/21 11:43:58 by klino-an         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static void free_mem(char **str, size_t count)
         free(str[i]);
         i++;
     }
-    free (str);
+    free(str);
 }
 
 static void fill_arr(char **str, char const *s, size_t count, char c)
@@ -67,7 +67,7 @@ static int split_str(char **str, char const *s, size_t count, char c)
         str[mat_index] =(char *) malloc((arr_i + 1) * sizeof(char));
         if(!str[mat_index])
         {
-            free_mem(str, count);
+            free_mem(str, mat_index);
             return (0);
         }
         mat_index++;
@@ -80,13 +80,14 @@ static  size_t count_words (char const *s, char c)
     size_t i;
     size_t count;
 
-    i = 0;
+    i = 0;    
+
     count = 0;
     while (s[i])
     {
         while (s[i] == c)
             i++;
-        if (s[i] && s[i] != c)
+        if (s[i] && s[i] != c)    
         {
             count++;
             while (s[i] && s[i] != c)
@@ -115,13 +116,15 @@ char **ft_split(char const *s, char c)
 
 /* int main()
 {
-  	char str[] = ",,,,,banana,,,,uva,,,,,,maca,,,pera,,,,,";
+	char str[] = ",,,,,banana,,,,uva,,,,,,maca,,,pera,,,,,";
 	char set = ',';
     char **matriz = ft_split(str, set);
 	size_t i = 0;
 	while (i < count_words(str, set))
 	{
 		printf("%s\n",matriz[i]);
+		free(matriz[i]);
 		i++;
 	}
+	free(matriz);
 } */
