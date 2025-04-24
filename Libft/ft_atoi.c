@@ -6,7 +6,7 @@
 /*   By: klino-an <klino-an@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 12:38:39 by klino-an          #+#    #+#             */
-/*   Updated: 2025/04/14 14:44:30 by klino-an         ###   ########.fr       */
+/*   Updated: 2025/04/23 17:09:29 by klino-an         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ int	ft_atoi(const char *str)
 	}
 	return (nb * sign);
 }
-
-/* int main()
+/* 
+int main()
 {
 	char a[] = "45a6746";
 	char b[]= "--87a2";

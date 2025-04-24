@@ -1,54 +1,64 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear_bonus.c                                :+:      :+:    :+:   */
+/*   ft_lstiter_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: klino-an <klino-an@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/21 18:44:49 by klino-an          #+#    #+#             */
+/*   Created: 2025/04/23 10:29:27 by klino-an          #+#    #+#             */
 /*   Updated: 2025/04/23 10:54:44 by klino-an         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstclear(t_list **lst, void (*del)(void *))
+void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
-	t_list	*temp;
-	t_list	*next;
-
-	if (!lst || !*lst || !del)
-		return ;
-	temp = *lst;
-	while (temp)
+	if (lst && f)
 	{
-		next = temp->next;
-		ft_lstdelone(temp, (del));
-		temp = next;
+		while (lst)
+		{
+			(f)(lst->content);
+			lst = lst->next;
+		}
 	}
-	*lst = NULL;
+}
+/* void put_a(void *content)
+{
+	char	*str;
+
+	str = (char *)content;
+	str[0] = 'a';
 }
 
-/* int main ()
+int	main(void)
 {
-	t_list	*node1;
-	t_list	*node2;
-	t_list	*node3;
-	t_list	*node4;
-	t_list	*temp;
+		while (s[i])
+		{
+			str[i] = (f)(i, s[i]);
+			i++;
+		}
+	t_list *node1;
+	t_list *node2;
+	t_list *node3;
+	t_list *node4;
+	t_list *temp;
 
 	node1 = malloc(sizeof(t_list));
 	node2 = malloc(sizeof(t_list));
 	node3 = malloc(sizeof(t_list));
 	node4 = malloc(sizeof(t_list));
+
 	node1->content = ft_strdup("1");
 	node2->content = ft_strdup("2");
 	node3->content = ft_strdup("3");
 	node4->content = ft_strdup("4");
+
 	node1->next = node2;
 	node2->next = node3;
 	node3->next = node4;
 	node4->next = NULL;;
+
 	temp = node1;
 	printf("Antes\n");
 	while(temp)
@@ -56,12 +66,12 @@ void	ft_lstclear(t_list **lst, void (*del)(void *))
 		printf("\n%s\n",  (char *)temp->content);
 		temp = temp->next;
 	}
+	ft_lstiter(node1, put_a);
 	temp = node1;
-	ft_lstclear(&node1, free);
 	printf("Depois:\n");
-	if (node1 == NULL)
-		printf("Limpeza realizada com sucesso\n");
-	else
-		printf("Erro ao limpar");
-}
- */
+	while(temp)
+	{
+		printf("\n%s\n",  (char *)temp->content);
+		temp = temp->next;
+	}
+} */

@@ -6,25 +6,25 @@
 /*   By: klino-an <klino-an@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 11:20:31 by klino-an          #+#    #+#             */
-/*   Updated: 2025/04/21 12:50:32 by klino-an         ###   ########.fr       */
+/*   Updated: 2025/04/23 11:02:15 by klino-an         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int ft_lstsize(t_list *lst)
+int	ft_lstsize(t_list *lst)
 {
-    t_list *temp;
-    int     i;
+	t_list	*temp;
+	int		i;
 
-    temp = lst;
-    i = 0;
-    while (temp != NULL)
-    {
-        temp = temp->next;
-        i++; 
-    }
-    return (i);
+	temp = lst;
+	i = 0;
+	while (temp != NULL)
+	{
+		temp = temp->next;
+		i++;
+	}
+	return (i);
 }
 
 /* int main ()
@@ -34,7 +34,7 @@ int ft_lstsize(t_list *lst)
 	t_list *node3;
 	t_list *node4;
 	t_list *node5;
-    t_list *head;
+	t_list *head;
 
 	node1 = ft_lstnew("Node 1");
 	node2 = ft_lstnew("Node 2");
@@ -47,11 +47,11 @@ int ft_lstsize(t_list *lst)
 	node1->next->next->next = node4;
 	node1->next->next->next->next = node5;
 
-    head = node1;
+	head = node1;
 	while(node1 != NULL)
 	{
-	    printf("\n%s\n",  (char *)node1->content);
-	    node1 = node1->next;
+		printf("\n%s\n",  (char *)node1->content);
+		node1 = node1->next;
 	}
-    printf("Contagem de nodes: %d", ft_lstsize(head));
+	printf("Contagem de nodes: %d", ft_lstsize(head));
 } */
