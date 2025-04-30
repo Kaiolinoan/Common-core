@@ -11,12 +11,12 @@ $(NAME): $(OBJS)
 	@ar rcs $(NAME) $(OBJS)
 
 %.o:%.c
-	$(CC) $(FLAGS) -I. -c $< -o $@
+	@$(CC) $(FLAGS) -I. -c $< -o $@
 
 clean: 
-	rm -f $(OBJS)
+	@rm -f $(OBJS)
 
 fclean: clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
 
 re: fclean all
