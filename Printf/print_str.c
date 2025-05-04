@@ -19,6 +19,11 @@ int    print_str(const char *str)
 
     count = 0;
     i = 0;
+    if(!str)
+    {
+        count+= write(1,"(null)", 6);
+        return (-1);
+    }
     while(str[i])
     {
         count +=write(1, &str[i], 1);

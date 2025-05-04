@@ -32,7 +32,7 @@ int print_unsigned(unsigned int nb)
     
     count = 0;
     if (nb >= 10)
-        print_unsigned(nb /10);
+        count += print_unsigned(nb /10);
     c = nb % 10 + '0';
     count += write (1, &c, 1);
     return (count);

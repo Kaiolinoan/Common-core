@@ -18,7 +18,7 @@ int print_hex(unsigned long nb, const char *hex)
 
     count = 0;
     if (nb >= 16)
-        print_hex(nb / 16, hex); //count aqui??
+        count += print_hex(nb / 16, hex);
     count+=write(1, &hex[nb % 16], 1);
     return (count);
 }
