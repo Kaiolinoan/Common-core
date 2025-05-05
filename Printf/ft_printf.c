@@ -6,7 +6,7 @@
 /*   By: klino-an <klino-an@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/27 14:15:44 by klino-an          #+#    #+#             */
-/*   Updated: 2025/05/01 20:26:21 by klino-an         ###   ########.fr       */
+/*   Updated: 2025/05/05 18:52:09 by klino-an         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,11 +51,13 @@ int	ft_printf(const char *str, ...)
 	i = 0;
 	while (str[i])
 	{
-		if (str[i] == '%')
+		while (str[i] == '%')
 		{
 			count += check_type(str[++i], args);
 			if (count == -1)
 				return (-1);
+			if(str[i + 1] == '\0')
+				return (count);
 			i++;
 		}
 		count += write(1, &str[i], 1);
@@ -65,8 +67,12 @@ int	ft_printf(const char *str, ...)
 	return (count);
 }
 
-int	main(void)
+/* int	main(void)
 {
+	// ft_printf("%p", NULL);
+	// printf("%p", NULL);
+	// printf("%c\n", 'a');
+
 	char c = 'A';
 	char *str = "isso e uma string";
 	unsigned int unb = 42;
@@ -86,9 +92,9 @@ int	main(void)
 
 
 	printf("\nchar:\n");
-	int r3 = ft_printf("%c %c\n",c, 'a');
+	int r3 = ft_printf("%c%c%c\n",c, 'a', '3');
 	printf("caracteres impressos: %d\n", r3);
-	r3 = printf("%c %c\n",c, 'a');
+	r3 = printf("%c%c%c\n",c, 'a', '3');
 	printf("caracteres impressos: %d\n", r3);
 
 
@@ -133,4 +139,4 @@ int	main(void)
 	printf("caracteres impressos: %d\n", r10);
 	r10 = printf("%%\n");
 	printf("caracteres impressos: %d\n", r10);
-}
+} */
