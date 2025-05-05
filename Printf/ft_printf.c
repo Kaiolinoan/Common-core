@@ -53,7 +53,9 @@ int	ft_printf(const char *str, ...)
 	{
 		if (str[i] == '%')
 		{
-			count += check_type(str[++i], args); //checkar por erros depois
+			count += check_type(str[++i], args);
+			if (count == -1)
+				return (-1);
 			i++;
 		}
 		count += write(1, &str[i], 1);
