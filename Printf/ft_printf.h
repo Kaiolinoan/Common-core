@@ -13,8 +13,11 @@
 #ifndef FT_PRINTF_H
 #define FT_PRINTF_H
 
-#include "../Libft/libft.h" //VERIFICAR ISTO
 #include <stdarg.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <stddef.h>
 
 int		ft_printf(const char *, ...);
 int    	print_char(int c);
@@ -23,5 +26,9 @@ int     print_pointer(void * ptr);
 int     print_numbers(int nb);
 int     print_unsigned(unsigned int nb);
 int		print_hex(unsigned long nb, const char *hex);
+char	*ft_itoa(int n);
+size_t  ft_strlen(const char *str);
+
+
 
 #endif
