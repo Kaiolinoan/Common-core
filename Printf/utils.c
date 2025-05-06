@@ -6,13 +6,12 @@
 /*   By: klino-an <klino-an@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 12:23:45 by klino-an          #+#    #+#             */
-/*   Updated: 2025/05/01 14:45:28 by klino-an         ###   ########.fr       */
+/*   Updated: 2025/05/06 10:34:38 by klino-an         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <string.h>
-
 
 static size_t	count_nb(int n)
 {
@@ -55,14 +54,15 @@ static char	*put_in_string(int n, char *str, size_t counter)
 	str[counter2] = '\0';
 	return (str);
 }
-size_t  ft_strlen(const char *str)
-{
-    size_t i;
 
-    i = 0;
-    while(str[i])
-        i++;
-    return(i);
+size_t	ft_strlen(const char *str)
+{
+	size_t	i;
+
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
 }
 
 static char	*ft_strdup(const char *s)

@@ -6,7 +6,7 @@
 /*   By: klino-an <klino-an@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/27 14:15:44 by klino-an          #+#    #+#             */
-/*   Updated: 2025/05/05 18:52:09 by klino-an         ###   ########.fr       */
+/*   Updated: 2025/05/06 10:40:56 by klino-an         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,15 @@ int	check_type(char i, va_list args)
 	if (i == 'c')
 		count += print_char(va_arg(args, int));
 	else if (i == 's')
-		count += print_str(va_arg(args, const char*));
+		count += print_str(va_arg(args, const char *));
 	else if (i == 'p')
-		count += print_pointer(va_arg(args, void*));
+		count += print_pointer(va_arg(args, void *));
 	else if (i == 'd')
 		count += print_numbers(va_arg(args, int));
 	else if (i == 'i')
 		count += print_numbers(va_arg(args, int));
 	else if (i == 'u')
-	    count += print_unsigned(va_arg(args, unsigned int));
+		count += print_unsigned(va_arg(args, unsigned int));
 	else if (i == 'x')
 		count += print_hex(va_arg(args, unsigned int), "0123456789abcdef");
 	else if (i == 'X')
@@ -56,7 +56,7 @@ int	ft_printf(const char *str, ...)
 			count += check_type(str[++i], args);
 			if (count == -1)
 				return (-1);
-			if(str[i + 1] == '\0')
+			if (str[i + 1] == '\0')
 				return (count);
 			i++;
 		}
@@ -69,9 +69,6 @@ int	ft_printf(const char *str, ...)
 
 /* int	main(void)
 {
-	// ft_printf("%p", NULL);
-	// printf("%p", NULL);
-	// printf("%c\n", 'a');
 
 	char c = 'A';
 	char *str = "isso e uma string";
@@ -129,13 +126,13 @@ int	ft_printf(const char *str, ...)
 	printf("caracteres impressos: %d\n", r8);
 
 	printf("\npointer:\n");
-    int r9 = ft_printf("%p\n", &str);
+	int r9 = ft_printf("%p\n", &str);
 	printf("caracteres impressos: %d\n", r9);
 	r9 = printf("%p\n", &str);
 	printf("caracteres impressos: %d\n", r9);
 
 	printf("\nteste %%:\n");
-    int r10 = ft_printf("%%\n");
+	int r10 = ft_printf("%%\n");
 	printf("caracteres impressos: %d\n", r10);
 	r10 = printf("%%\n");
 	printf("caracteres impressos: %d\n", r10);
