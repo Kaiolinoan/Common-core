@@ -6,7 +6,7 @@
 /*   By: klino-an <klino-an@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 12:47:16 by klino-an          #+#    #+#             */
-/*   Updated: 2025/05/06 13:33:53 by klino-an         ###   ########.fr       */
+/*   Updated: 2025/05/07 19:19:20 by klino-an         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,19 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <stdlib.h>
+#include <string.h>
 #include <stddef.h>
 # include <fcntl.h>
 
-# define BUFFER_SIZE 1024
+#ifndef BUFFER_SIZE
+# define BUFFER_SIZE 2
+#endif
 
 char    *get_next_line(int fd);
 size_t  ft_strlen(const char *str);
-char	*ft_strjoin(char const *s1, char const *s2);
+char	*ft_strjoin(char *s1, char  *s2);
+char	*ft_strchr(const char *str, int c);
+char    *write_line(char *temp);
+
 
 #endif
