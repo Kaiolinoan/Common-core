@@ -6,7 +6,7 @@
 /*   By: klino-an <klino-an@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 12:47:02 by klino-an          #+#    #+#             */
-/*   Updated: 2025/05/07 21:17:42 by klino-an         ###   ########.fr       */
+/*   Updated: 2025/05/08 18:59:35 by klino-an         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,22 +34,23 @@ char *get_next_line(int fd)
         buffer[chars_read] = '\0';
         if(!(line = ft_strjoin(line, buffer)))
         return (NULL);
-        if (ft_strchr(buffer, '\n'))
+        if (ft_strchr(buffer, '\n') != NULL)
              break;
     }
-    update_buffer(buffer);
+    update_buffer(buffer, 0);
     return(line);
 }
 
 int main()
 {
-    // int fd = open("test.txt", O_RDONLY);
-    // get_next_line(fd);
-    char *s1 = strdup("ola");
+    int fd = open("test.txt", O_RDONLY);
+    char    *sla =  get_next_line(fd);
+    printf("%s", sla);
+    close (fd);
+}
+/*     char *s1 = strdup("ola, ");
     char *s2 = strdup("mundo");
     char *str = ft_strjoin(s1, s2);
     printf ("%s", str);
     free(str);
-    // printf("%s", get_next_line(fd));
-    // close (fd);
-}
+    free (s2); */

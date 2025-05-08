@@ -6,7 +6,7 @@
 /*   By: klino-an <klino-an@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 12:47:07 by klino-an          #+#    #+#             */
-/*   Updated: 2025/05/07 21:24:40 by klino-an         ###   ########.fr       */
+/*   Updated: 2025/05/08 19:07:28 by klino-an         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ char	*ft_strjoin(char *s1, char *s2)
 	if (!str)
 		return (NULL);
 	i = 0;
-	while (s1 && s1[i])
+	while (!s1 && s1[i])
 	{
 		str[i] = s1[i];
 		i++; 
@@ -52,31 +52,6 @@ char	*ft_strjoin(char *s1, char *s2)
 	free (s1);
 	return (str);
 }
-
-/* char	*write_line(char *temp)
-{
-	size_t i;
-	size_t j;
-	char *new_str;
-
-	i = 0;
-	j = 0;
-	if (!temp)
-		return (NULL);
-	while(temp[j] && temp[j] != '\n')
-		j++;
-	new_str = malloc(j + 1);
-	if (!new_str)
-		return (free(new_str), NULL);
-	while (i < j)
-	{
-		new_str[i] = temp[i];
-		i++;
-	}
-	new_str[j + 1] = '\0';
-	return(new_str);    
-} */
-
 
 char	*ft_strchr(const char *str, int c)
 {
@@ -94,16 +69,31 @@ char	*ft_strchr(const char *str, int c)
 	return (NULL);
 }
 
-void	update_buffer(char *buffer)
+void	update_buffer(char *buffer, size_t j)
 {
 	size_t i;
 	size_t buffer_size;
+	char *temp;
 
 	i = 0;
+	temp = NULL;
 	buffer_size = ft_strlen(buffer);
-	while (i < buffer_size)
+	while (buffer[i] != '\n')
+		i++;
+	if (buffer[i] == '\n')
 	{
-		if(buffer[i] != '\n')
-			i++;
+		i++;
+		while (i < buffer_size)
+			temp[j++] = buffer[i++];
+	}
+	i = 0;
+	while (i < buffer_size)
+		buffer[i++] = '\0';
+	i = 0;
+	while (temp[i])
+	{
+		buffer[i] = temp[i];
+		i++;
 	}
 }
+
