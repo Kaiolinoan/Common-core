@@ -6,7 +6,7 @@
 /*   By: klino-an <klino-an@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 12:47:16 by klino-an          #+#    #+#             */
-/*   Updated: 2025/05/08 21:32:49 by klino-an         ###   ########.fr       */
+/*   Updated: 2025/05/09 18:45:02 by klino-an         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,14 @@
 # include <fcntl.h>
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 4
+#  define BUFFER_SIZE 2
 # endif
 
 char	*get_next_line(int fd);
 size_t	gnl_strlen(const char *str);
 char	*gnl_strjoin(char *s1, char *s2);
 char	*gnl_strchr(const char *str, int c);
-void	update_buffer(char *buffer, size_t start, size_t buffer_size);
+void	update_buffer(char *buffer, size_t start, size_t buffer_size, char * buffer2);
+void	clean_buffer(char *buffer);
 
 #endif

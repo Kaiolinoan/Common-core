@@ -6,7 +6,7 @@
 /*   By: klino-an <klino-an@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 12:47:02 by klino-an          #+#    #+#             */
-/*   Updated: 2025/05/08 21:43:10 by klino-an         ###   ########.fr       */
+/*   Updated: 2025/05/09 19:34:43 by klino-an         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 
 char	*get_next_line(int fd)
 {
-	static char	buffer[BUFFER_SIZE + 1];
+	// static char	buffer2[BUFFER_SIZE + 1];
+	char	buffer[BUFFER_SIZE + 1];
 	char		*line;
 	ssize_t		chars_read;
 
@@ -25,7 +26,7 @@ char	*get_next_line(int fd)
 	chars_read = 1;
 	while (1)
 	{
-		if (buffer[0] == '\0')
+		// if (buffer[0] == '\0')
 			chars_read = read(fd, buffer, BUFFER_SIZE);
 		if (chars_read < 0)
 			return (NULL);
@@ -35,10 +36,10 @@ char	*get_next_line(int fd)
 		line = gnl_strjoin(line, buffer);
 		if (!line)
 			return (NULL);
-		if (gnl_strchr(buffer, '\n') != NULL)
+		if (gnl_strchr(buffer, '\n'))
 			break ;
 	}
-	update_buffer(buffer, 0, sizeof(buffer));
+	update_buffer(buffer, 0, sizeof(buffer), buffer);
 	return (line);
 }
 /*
@@ -71,26 +72,26 @@ char *get_next_line(int fd)
     return(line);
 }
 */
-/* 
+
 int main()
 {
- 	// char buffer[20] = "Hello\nWorld";
+ 	// char buffer[20] = "Hello World";
 	// size_t buffer_size = sizeof(buffer);
 
 	// printf("Before update: '%s'\n", buffer);
 	// update_buffer(buffer, 0, buffer_size);
 	// printf("After update: '%s'\n", buffer);
 
-	// int fd = open("test.txt", O_RDONLY);
-	// char *line;
-	// while ((line = get_next_line(fd)) != NULL)
-	// {
-	// 	printf("%s", line);
-	// 	free(line);
-	// }
-	// close (fd);
+	int fd = open("test.txt", O_RDONLY);
+	char *line;
+	while ((line = get_next_line(fd)) != NULL)
+	{
+		printf("%s", line);
+		free(line);
+	}
+	close (fd);
 
-    // char *s1 = NULL;
+    // char *s1 = strdup("ola, ");
 	// char *s2 = strdup("mundo");
 	// char *str = gnl_strjoin(s1, s2);
 	// printf ("%s", str);
@@ -98,4 +99,3 @@ int main()
 	// free (s2);
 	return 0;
 }
-*/

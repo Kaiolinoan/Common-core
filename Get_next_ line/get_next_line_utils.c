@@ -6,7 +6,7 @@
 /*   By: klino-an <klino-an@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 12:47:07 by klino-an          #+#    #+#             */
-/*   Updated: 2025/05/08 21:40:43 by klino-an         ###   ########.fr       */
+/*   Updated: 2025/05/09 18:45:02 by klino-an         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,47 +70,21 @@ char	*gnl_strchr(const char *str, int c)
 	return (NULL);
 }
 
-void	update_buffer(char *buffer, size_t start, size_t buffer_size)
+void	update_buffer(char *buffer, size_t start, size_t buffer_size, char * buffer2)
 {
 	size_t	i;
 
 	i = 0;
+	// if (buffer[0] == '\0')
+	// 	//COLOCAR O NULL
 	while (buffer[i] && buffer[i] != '\n')
 		i++;
 	if (buffer[i] == '\n')
 		i++;
 	while (i < buffer_size && buffer[i])
-		buffer[start++] = buffer[i++];
-	while (start < buffer_size)
-		buffer[start++] = '\0';
-}
-/*
---//Antigo//--
-void	update_buffer(char *buffer, size_t j)
-{
-	size_t i;
-	size_t buffer_size;
-	char *temp;
+		buffer2[start++] = buffer[i++];
+	buffer2 = gnl_strjoin(buffer2, buffer);
 
-	i = 0;
-	buffer_size = gnl_strlen(buffer);
-	temp = NULL;
-	while (buffer[i] != '\n')
-		i++;
-	if (buffer[i] == '\n')
-	{
-		i++;
-		while (i < buffer_size)
-			temp[j++] = buffer[i++];
-	}
-	i = 0;
-	while (i < buffer_size)
-		buffer[i++] = '\0';
-	i = 0;
-	while (temp[i])
-	{
-		buffer[i] = temp[i];
-		i++;
-	}
-}
-*/
+} 
+
+
