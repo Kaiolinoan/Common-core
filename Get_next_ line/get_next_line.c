@@ -28,51 +28,23 @@ char	*get_next_line(int fd)
 		if (buffer[0] == '\0')
 			chars_read = read(fd, buffer, BUFFER_SIZE);
 		if (chars_read < 0)
+		{
+			free(line);
 			return (NULL);
+		}
 		else if (chars_read == 0)
 			return (line);
 		buffer[chars_read] = '\0';
 		line = gnl_strjoin(line, buffer);
-		if (!line)
-			return (NULL);
-		if (gnl_strchr(buffer, '\n'))
+		if (!line || gnl_strchr(buffer, '\n'))
 			break ;
 		else
 			clean_buffer(buffer, sizeof(buffer));
 	}
-	update_buffer(buffer, 0, sizeof(buffer));
+	update_buffer(buffer, sizeof(buffer));
 	return (line);
 }
-/*
---//Antes//--
-char *get_next_line(int fd)
-{
-    static char buffer[BUFFER_SIZE + 1];
-    char *line;
-    ssize_t chars_read;
 
-    if(fd < 0 || BUFFER_SIZE <= 0)
-        return (NULL);
-    chars_read = 1;
-    line = NULL;
-    while (1)
-    {
-        if(buffer[0] == '\0')
-            chars_read = read(fd, buffer, BUFFER_SIZE);
-        if (chars_read < 0)
-            return (NULL);
-        else if (chars_read == 0)
-            return(line);
-        buffer[chars_read] = '\0';
-        if(!(line = ft_strjoin(line, buffer)))
-        return (NULL);
-        if (ft_strchr(buffer, '\n') != NULL)
-             break;
-    }
-    update_buffer(buffer, 0);
-    return(line);
-}
-*/
 
 /* int main()
 {
@@ -84,6 +56,7 @@ char *get_next_line(int fd)
 	// printf("After update: '%s'\n", buffer);
 
 	int fd = open("test.txt", O_RDONLY);
+	// printf("%s", get_next_line(fd));
 	char *line;
 	while ((line = get_next_line(fd)) != NULL)
 	{
@@ -99,5 +72,4 @@ char *get_next_line(int fd)
 	// free(str);
 	// free (s2);
 	return 0;
-}
- */
+} */

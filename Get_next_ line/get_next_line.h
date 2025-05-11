@@ -28,7 +28,7 @@ char	*get_next_line(int fd);
 size_t	gnl_strlen(const char *str);
 char	*gnl_strjoin(char *s1, char *s2);
 char	*gnl_strchr(const char *str, int c);
-void	update_buffer(char *buffer, size_t start, size_t buffer_size);
+void	update_buffer(char *buffer, size_t buffer_size);
 void	clean_buffer(char *buffer, size_t buffer_size);
 
 #endif

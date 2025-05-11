@@ -70,11 +70,13 @@ char	*gnl_strchr(const char *str, int c)
 	return (NULL);
 }
 
-void	update_buffer(char *buffer, size_t start, size_t buffer_size)
+void	update_buffer(char *buffer, size_t buffer_size)
 {
 	size_t	i;
+	size_t	start;
 
 	i = 0;
+	start = 0;
 	while (buffer[i] && buffer[i] != '\n')
 		i++;
 	if (buffer[i] == '\n')
