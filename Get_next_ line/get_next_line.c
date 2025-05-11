@@ -15,18 +15,17 @@
 
 char	*get_next_line(int fd)
 {
-	// static char	buffer2[BUFFER_SIZE + 1];
-	char	buffer[BUFFER_SIZE + 1];
+	static char	buffer[BUFFER_SIZE + 1];
 	char		*line;
 	ssize_t		chars_read;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	line = NULL;
-	chars_read = 1;
+	chars_read = BUFFER_SIZE + 1;
 	while (1)
 	{
-		// if (buffer[0] == '\0')
+		if (buffer[0] == '\0')
 			chars_read = read(fd, buffer, BUFFER_SIZE);
 		if (chars_read < 0)
 			return (NULL);
@@ -38,8 +37,10 @@ char	*get_next_line(int fd)
 			return (NULL);
 		if (gnl_strchr(buffer, '\n'))
 			break ;
+		else
+			clean_buffer(buffer, sizeof(buffer));
 	}
-	update_buffer(buffer, 0, sizeof(buffer), buffer);
+	update_buffer(buffer, 0, sizeof(buffer));
 	return (line);
 }
 /*
@@ -73,7 +74,7 @@ char *get_next_line(int fd)
 }
 */
 
-int main()
+/* int main()
 {
  	// char buffer[20] = "Hello World";
 	// size_t buffer_size = sizeof(buffer);
@@ -99,3 +100,4 @@ int main()
 	// free (s2);
 	return 0;
 }
+ */
