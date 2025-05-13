@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: klino-an <klino-an@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/06 12:47:07 by klino-an          #+#    #+#             */
-/*   Updated: 2025/05/13 17:42:18 by klino-an         ###   ########.fr       */
+/*   Created: 2025/05/12 14:04:19 by klino-an          #+#    #+#             */
+/*   Updated: 2025/05/13 14:51:47 by klino-an         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 size_t	gnl_strlen(const char *str)
 {
@@ -35,7 +35,7 @@ char	*gnl_strjoin(char *s1, char *s2)
 
 	str = malloc(gnl_strlen(s1) + gnl_strlen(s2) + 1);
 	if (!str)
-		return (NULL);
+		return (free(s1), NULL);
 	i = 0;
 	while (s1 && s1[i])
 	{
@@ -59,17 +59,14 @@ char	*gnl_strchr(const char *str, int c)
 	size_t	i;
 
 	i = 0;
-	if (str)
+	while (str[i])
 	{
-		while (str[i])
-		{
-			if (str[i] == (char)c)
-				return ((char *)&str[i]);
-			i++;
-		}
-		if ((char)c == '\0')
+		if (str[i] == (char)c)
 			return ((char *)&str[i]);
+		i++;
 	}
+	if ((char)c == '\0')
+		return ((char *)&str[i]);
 	return (NULL);
 }
 
@@ -79,12 +76,21 @@ void	update_buffer(char *buffer)
 	size_t	j;
 
 	i = 0;
-	j = 0;
 	while (buffer[i] && buffer[i] != '\n')
 		i++;
 	if (buffer[i] == '\n')
 		i++;
+	j = 0;
 	while (buffer[i])
 		buffer[j++] = buffer[i++];
 	buffer[j] = '\0';
+}
+
+void	clean_buffer(char *buffer)
+{
+	size_t	i;
+
+	i = 0;
+	while (buffer[i])
+		buffer[i++] = '\0';
 }

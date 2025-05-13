@@ -6,7 +6,7 @@
 /*   By: klino-an <klino-an@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 12:47:02 by klino-an          #+#    #+#             */
-/*   Updated: 2025/05/09 19:34:43 by klino-an         ###   ########.fr       */
+/*   Updated: 2025/05/13 18:14:22 by klino-an         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,54 +22,37 @@ char	*get_next_line(int fd)
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	line = NULL;
-	chars_read = BUFFER_SIZE + 1;
 	while (1)
 	{
 		if (buffer[0] == '\0')
-			chars_read = read(fd, buffer, BUFFER_SIZE);
-		if (chars_read < 0)
 		{
-			free(line);
-			return (NULL);
+			chars_read = read(fd, buffer, BUFFER_SIZE);
+			if (chars_read < 0)
+				return (free(line), NULL);
+			if (chars_read == 0)
+				return (line);
+			buffer[chars_read] = '\0';
 		}
-		else if (chars_read == 0)
-			return (line);
-		buffer[chars_read] = '\0';
 		line = gnl_strjoin(line, buffer);
 		if (!line || gnl_strchr(buffer, '\n'))
 			break ;
-		else
-			clean_buffer(buffer, sizeof(buffer));
+		buffer[0] = '\0';
 	}
-	update_buffer(buffer, sizeof(buffer));
+	update_buffer(buffer);
 	return (line);
 }
 
-
-/* int main()
+/* int	main(void)
 {
- 	// char buffer[20] = "Hello World";
-	// size_t buffer_size = sizeof(buffer);
+	int		fd;
+	char	*line;
 
-	// printf("Before update: '%s'\n", buffer);
-	// update_buffer(buffer, 0, buffer_size);
-	// printf("After update: '%s'\n", buffer);
-
-	int fd = open("test.txt", O_RDONLY);
-	// printf("%s", get_next_line(fd));
-	char *line;
+	fd = open("test2.txt", O_RDONLY);
 	while ((line = get_next_line(fd)) != NULL)
 	{
 		printf("%s", line);
 		free(line);
 	}
-	close (fd);
-
-    // char *s1 = strdup("ola, ");
-	// char *s2 = strdup("mundo");
-	// char *str = gnl_strjoin(s1, s2);
-	// printf ("%s", str);
-	// free(str);
-	// free (s2);
-	return 0;
+	close(fd);
+	return (0);
 } */
