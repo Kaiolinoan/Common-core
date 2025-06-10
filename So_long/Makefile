@@ -1,6 +1,6 @@
 NAME = so_long
 CC = cc
-CFLAGS = -Werror -Wall -Wextra  -g
+CFLAGS = -Werror -Wall -Wextra  -g -I. -I..
 SRC_FOLDER = src
 SRCS = $(addprefix $(SRC_FOLDER)/, main.c parsing.c errors_handling.c)
 OBJS = $(SRCS:.c=.o)

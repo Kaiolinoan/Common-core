@@ -6,12 +6,11 @@
 /*   By: klino-an <klino-an@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 14:17:55 by klino-an          #+#    #+#             */
-/*   Updated: 2025/06/09 20:29:42 by klino-an         ###   ########.fr       */
+/*   Updated: 2025/06/10 18:54:25 by klino-an         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h" 
-#include "../Libft/libft.h"
 
 static int count_lines(char *filename)
 {
