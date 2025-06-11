@@ -19,12 +19,19 @@ void flood_fill(s_map *map, int x, int y, char old, char new)
 }
 
 void prepare_to_flood(s_map *map)
-{/* 
-    s_map *map_copy;
+{ 
+    s_map *new_map;
+    int i;
 
-    map_copy = map;
-    map_copy->player_x = 1;
-    map_copy->player_y = 1;
-    flood_fill(map_copy, map_copy->player_x, map_copy->player_y, '0', 'V'); */
-    //ALOCAR MEMORIA PARA A COPIA
+    i = 0;
+    new_map = malloc(sizeof(s_map));
+    if (!new_map)
+        return (NULL);
+    new_map->grid = malloc(sizeof(char *)  * (map->height + 1));
+    if (!new_map->grid)
+        return (NULL);
+    while(map)
+ 
+   
+    // flood_fill(map_copy, map_copy->player_x, map_copy->player_y, '0', 'V'); */
 }

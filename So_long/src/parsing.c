@@ -66,7 +66,7 @@ s_map *load_map(char *filename)
         free(map);
         exit(-1);
     }
-    map->height = count_lines(filename);
+    map->height = count_lines(filename);s
     if (map->height <= 2)
         return (free(map), NULL);
     map->grid = malloc(sizeof(char *) * (map->height + 1));
