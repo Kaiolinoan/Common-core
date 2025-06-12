@@ -6,7 +6,7 @@
 /*   By: klino-an <klino-an@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 14:17:55 by klino-an          #+#    #+#             */
-/*   Updated: 2025/06/10 18:54:25 by klino-an         ###   ########.fr       */
+/*   Updated: 2025/06/12 10:29:12 by klino-an         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ s_map *load_map(char *filename)
         free(map);
         exit(-1);
     }
-    map->height = count_lines(filename);s
+    map->height = count_lines(filename);
     if (map->height <= 2)
         return (free(map), NULL);
     map->grid = malloc(sizeof(char *) * (map->height + 1));

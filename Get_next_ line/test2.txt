@@ -1,0 +1,8 @@
+AAFFFFFF FF BB
+
+AA FFFFFFFF BB
+%c %p       %c
+
+abcd
+
+dcba

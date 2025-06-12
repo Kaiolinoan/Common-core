@@ -6,7 +6,7 @@
 /*   By: klino-an <klino-an@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 12:47:02 by klino-an          #+#    #+#             */
-/*   Updated: 2025/05/13 18:14:22 by klino-an         ###   ########.fr       */
+/*   Updated: 2025/05/20 10:01:21 by klino-an         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ char	*get_next_line(int fd)
 {
 	int		fd;
 	char	*line;
-
 	fd = open("test2.txt", O_RDONLY);
+
 	while ((line = get_next_line(fd)) != NULL)
 	{
 		printf("%s", line);
@@ -55,4 +55,5 @@ char	*get_next_line(int fd)
 	}
 	close(fd);
 	return (0);
+
 } */
