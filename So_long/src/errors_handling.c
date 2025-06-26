@@ -6,7 +6,7 @@
 /*   By: klino-an <klino-an@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 17:04:16 by klino-an          #+#    #+#             */
-/*   Updated: 2025/06/19 22:00:39 by klino-an         ###   ########.fr       */
+/*   Updated: 2025/06/26 12:23:01 by klino-an         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 static int	check_extension(char *filename)
 {
-	int		i;
 	char	*sub;
 
-	i = ft_strlen(filename);
 	sub = ft_strrchr(filename, '.');
+	if (!sub)
+		return (0);
 	if (ft_strncmp(sub, ".ber", 4) != 0)
 		return (0);
 	return (1);
@@ -97,22 +97,21 @@ static int	check_walls(t_map *map)
 
 int	check_if_map_is_valid(t_map *map, char *filename)
 {
-	/* COLOCAR EM INGLES*/
 	if (check_extension(filename) == 0)
-		return (ft_printf("Caminho invalido"), 0);
+		return (ft_printf("Erro:\nFile is not supported\n"), 0);
 	if (check_format(map) == 0)
-		return (ft_printf("Formato invalido"), 0);
+		return (ft_printf("Erro:\nInvalid Format\n"), 0);
 	if (check_characters(map) == 0)
-		return (ft_printf("Caracter invalido"), 0);
+		return (ft_printf("Erro:\nInvalid Character\n"), 0);
 	if (check_walls(map) == 0)
-		return (ft_printf("Mapa invalido"), 0);
+		return (ft_printf("Erro:\nInvalid Map\n"), 0);
 	if (check_player(map) == 0)
-		return (ft_printf("Player invalido"), 0);
+		return (ft_printf("Erro:\nInvalid Player\n"), 0);
 	if (check_exit(map) == 0)
-		return (ft_printf("Saida invalida"), 0);
+		return (ft_printf("Erro:\nInvalid Exit\n"), 0);
 	if (check_collectables(map) == 0)
-		return (ft_printf("Coletaveis invalidos"), 0);
+		return (ft_printf("Erro:\nInvalid Collectable\n"), 0);
 	if (prepare_to_flood(map) == 0)
-		return (ft_printf("Caminho invalido"), 0);
+		return (ft_printf("Erro:\nInvalid Path\n"), 0);
 	return (1);
 }

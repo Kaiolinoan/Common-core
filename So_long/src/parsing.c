@@ -6,7 +6,7 @@
 /*   By: klino-an <klino-an@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 14:17:55 by klino-an          #+#    #+#             */
-/*   Updated: 2025/06/21 20:04:21 by klino-an         ###   ########.fr       */
+/*   Updated: 2025/06/26 12:19:21 by klino-an         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,7 @@ static int	count_lines(char *filename)
 		count++;
 		free(line);
 	}
-	close(fd);
-	return (count);
+	return (close(fd), count);
 }
 
 static t_map	*fill_map(t_map *map, char *filename)
@@ -36,10 +35,10 @@ static t_map	*fill_map(t_map *map, char *filename)
 	int		fd;
 	char	*line;
 	size_t	i;
-
+	
 	fd = open(filename, O_RDONLY);
 	if (fd < 0)
-		exit(-1);
+		return (perror("Erro:\n"), NULL);
 	i = 0;
 	line = NULL;
 	while ((line = get_next_line(fd)))
@@ -50,8 +49,7 @@ static t_map	*fill_map(t_map *map, char *filename)
 	}
 	map->width = ft_strlen(map->grid[0]);
 	map->grid[i] = NULL;
-	close(fd);
-	return (map);
+	return (close(fd), map);
 }
 
 t_map	*load_map(char *filename)
@@ -62,22 +60,18 @@ t_map	*load_map(char *filename)
 	if (!map)
 		return (free(map), NULL);
 	if (count_lines(filename) == -1)
-	{
-		free(map);
-		exit(-1);
-	}
+		return (free(map), NULL);
 	map->height = count_lines(filename);
 	if (map->height <= 2)
 		return (free(map), NULL);
 	map->grid = malloc(sizeof(char *) * (map->height + 1));
 	if (!map->grid)
-	{
-		free(map->grid);
-		return (free(map), NULL);
-	}
+		return (free(map->grid), free(map), NULL);
 	map = fill_map(map, filename);
 	if (!map)
 		return (ft_printf("Erro ao preencher o mapa!"), NULL);
+	if (check_if_map_is_valid(map, filename) == 0)
+		return (clean_map(map), NULL);
 	return (map);
 }
 

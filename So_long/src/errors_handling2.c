@@ -6,7 +6,7 @@
 /*   By: klino-an <klino-an@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 17:04:16 by klino-an          #+#    #+#             */
-/*   Updated: 2025/06/21 19:53:26 by klino-an         ###   ########.fr       */
+/*   Updated: 2025/06/25 16:53:19 by klino-an         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,11 @@ int	check_exit(t_map *map)
 		while (map->grid[i][j])
 		{
 			if (map->grid[i][j] == 'E')
+			{
 				count++;
+				map->exit_y = i;
+				map->exit_x = j;
+			}
 			j++;
 		}
 		i++;
@@ -89,22 +93,22 @@ int	check_collectables(t_map *map)
 	return (1);
 }
 
-int	check_flood_fill(t_map *map, int x, int y, int collectables)
+int	check_flood_fill(t_map *new_map, int x, int y, int collectables)
 {
 	static int	exit;
 	static int	col;
 
-	if (map->grid[y][x] == '1')
+	if (new_map->grid[y][x] == '1')
 		return (0);
-	if (map->grid[y][x] == 'E')
+	if (new_map->grid[y][x] == 'E')
 		exit++;
-	if (map->grid[y][x] == 'C')
+	if (new_map->grid[y][x] == 'C')
 		col++;
-	map->grid[y][x] = '1';
-	check_flood_fill(map, x + 1, y, collectables);
-	check_flood_fill(map, x - 1, y, collectables);
-	check_flood_fill(map, x, y + 1, collectables);
-	check_flood_fill(map, x, y - 1, collectables);
+	new_map->grid[y][x] = '1';
+	check_flood_fill(new_map, x + 1, y, collectables);
+	check_flood_fill(new_map, x - 1, y, collectables);
+	check_flood_fill(new_map, x, y + 1, collectables);
+	check_flood_fill(new_map, x, y - 1, collectables);
 	if (exit == 1 && col == collectables)
 		return (1);
 	return (0);
@@ -125,7 +129,7 @@ int	prepare_to_flood(t_map *map)
 		return (0);
 	while (map->grid[i])
 	{
-		new_map->grid[i] = map->grid[i];
+		new_map->grid[i] = ft_strdup(map->grid[i]);
 		i++;
 	}
 	new_map->grid[i] = NULL;

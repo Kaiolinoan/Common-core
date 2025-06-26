@@ -2,7 +2,7 @@ NAME = so_long
 CC = cc
 CFLAGS = -Werror -Wall -Wextra  -g -I. -I.. -Iminilibx-linux
 SRC_FOLDER = src
-SRCS = $(addprefix $(SRC_FOLDER)/, main.c parsing.c errors_handling.c errors_handling2.c)
+SRCS = $(addprefix $(SRC_FOLDER)/, main.c parsing.c errors_handling.c errors_handling2.c images.c move.c)
 OBJS = $(SRCS:.c=.o)
 MLX_FLAGS = -Lminilibx-linux -lmlx -lXext -lX11 -lm -lz
 
@@ -23,7 +23,6 @@ $(NAME): $(OBJS)
 
 mlx:
 	@git clone https://github.com/42Paris/minilibx-linux.git
-	@make -C minilibx-linux
  
 clean:
 	@find . -name '*.o' -delete
