@@ -6,7 +6,7 @@
 /*   By: klino-an <klino-an@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 14:17:55 by klino-an          #+#    #+#             */
-/*   Updated: 2025/06/26 12:19:21 by klino-an         ###   ########.fr       */
+/*   Updated: 2025/06/29 18:10:31 by klino-an         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static t_map	*fill_map(t_map *map, char *filename)
 	int		fd;
 	char	*line;
 	size_t	i;
-	
+
 	fd = open(filename, O_RDONLY);
 	if (fd < 0)
 		return (perror("Erro:\n"), NULL);
@@ -89,4 +89,3 @@ void	clean_map(t_map *map)
 	if (map)
 		free(map);
 }
-

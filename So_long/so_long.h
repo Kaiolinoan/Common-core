@@ -6,7 +6,7 @@
 /*   By: klino-an <klino-an@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 17:07:13 by klino-an          #+#    #+#             */
-/*   Updated: 2025/06/25 17:12:19 by klino-an         ###   ########.fr       */
+/*   Updated: 2025/06/29 18:11:00 by klino-an         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <X11/keysym.h>
 # include <mlx.h>
 
-# define px 64
+# define PX 64
 
 typedef struct map_infos
 {
@@ -46,10 +46,10 @@ typedef struct data_infos
 {
 	void	*mlx;
 	void	*win;
+	int		moves;
 	t_image	img;
 	t_map	*map;
 }			t_data;
-
 
 int			check_flood_fill(t_map *map, int x, int y, int collectables);
 int			check_if_map_is_valid(t_map *map, char *filename);
@@ -62,7 +62,5 @@ int			check_exit(t_map *map);
 void		clean_map(t_map *map);
 int			put_img(t_data *data);
 void		images(t_data *data);
-
-
 
 #endif
