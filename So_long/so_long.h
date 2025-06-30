@@ -6,7 +6,7 @@
 /*   By: klino-an <klino-an@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 17:07:13 by klino-an          #+#    #+#             */
-/*   Updated: 2025/06/29 18:11:00 by klino-an         ###   ########.fr       */
+/*   Updated: 2025/06/30 16:38:04 by klino-an         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,21 @@ typedef struct map_infos
 typedef struct images_infos
 {
 	void	*coin;
-	void	*player;
+	void	*player[9];
 	void	*floor;
 	void	*wall;
 	void	*exit;
 
 }			t_image;
+
+typedef struct animation_infos
+{
+	t_map *map;
+	int frame_count;
+	char *coins[9];
+	char *player[10];
+	
+}			t_anim;
 
 typedef struct data_infos
 {
@@ -49,7 +58,10 @@ typedef struct data_infos
 	int		moves;
 	t_image	img;
 	t_map	*map;
+	t_anim	*anim;
 }			t_data;
+
+
 
 int			check_flood_fill(t_map *map, int x, int y, int collectables);
 int			check_if_map_is_valid(t_map *map, char *filename);
