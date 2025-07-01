@@ -2,7 +2,7 @@ NAME = so_long
 CC = cc
 CFLAGS = -Werror -Wall -Wextra  -g -I. -I.. -Iminilibx-linux
 SRC_FOLDER = src
-SRCS = $(addprefix $(SRC_FOLDER)/, main.c parsing.c errors_handling.c errors_handling2.c images.c move.c)
+SRCS = $(addprefix $(SRC_FOLDER)/, main.c parsing.c map_validation.c map_validation2.c images.c game.c)
 OBJS = $(SRCS:.c=.o)
 MLX_FLAGS = -Lminilibx-linux -lmlx -lXext -lX11 -lm -lz
 
@@ -17,9 +17,6 @@ $(NAME): $(OBJS)
 	@echo 'Biblioteca criada'
 	@echo 'Codigo compilado!'
 
-%.o:%.c
-	
-	@$(CC) $(CFLAGS) -I. -c -Imlx_linux -O3 -c $< -o $@
 
 mlx:
 	@git clone https://github.com/42Paris/minilibx-linux.git
