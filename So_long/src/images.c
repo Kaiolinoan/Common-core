@@ -6,7 +6,7 @@
 /*   By: klino-an <klino-an@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 12:25:22 by klino-an          #+#    #+#             */
-/*   Updated: 2025/07/01 15:38:42 by klino-an         ###   ########.fr       */
+/*   Updated: 2025/07/01 18:34:19 by klino-an         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,30 @@ void	images(t_data *data)
 	size = PX;
 	data->img.coin = mlx_xpm_file_to_image(data->mlx, "assets/Gold/gold5.xpm",
 			&size, &size);
-	data->img.player = mlx_xpm_file_to_image(data->mlx, "assets/Player/player1.xpm",
-			&size, &size);
+	data->img.player = mlx_xpm_file_to_image(data->mlx,
+			"assets/Player/player1.xpm", &size, &size);
 	data->img.wall = mlx_xpm_file_to_image(data->mlx, "assets/Grass/tree.xpm",
 			&size, &size);
 	data->img.floor = mlx_xpm_file_to_image(data->mlx, "assets/Grass/grass.xpm",
 			&size, &size);
 	data->img.exit = mlx_xpm_file_to_image(data->mlx, "assets/Grass/test7.xpm",
 			&size, &size);
+}
+
+static void	get_img(t_data *data, int i, int j)
+{
+	if (data->map->grid[i][j] == '1')
+		data->img.temp = data->img.wall;
+	if (data->map->grid[i][j] == '0')
+		data->img.temp = data->img.floor;
+	if (data->map->grid[i][j] == 'E')
+		data->img.temp = data->img.exit;
+	if (data->map->grid[i][j] == 'C')
+		data->img.temp = data->img.coin;
+	if (data->map->grid[i][j] == 'P')
+		data->img.temp = data->img.player;
+	mlx_put_image_to_window(data->mlx, data->win,
+		data->img.temp, j * PX, i * PX);
 }
 
 int	put_img(t_data *data)
@@ -40,17 +56,7 @@ int	put_img(t_data *data)
 		j = 0;
 		while (data->map->grid[i][j])
 		{
-			if (data->map->grid[i][j] == '1')
-				data->img.temp = data->img.wall;
-			if (data->map->grid[i][j] == '0')
-				data->img.temp = data->img.floor;
-			if (data->map->grid[i][j] == 'E')
-				data->img.temp = data->img.exit;
-			if (data->map->grid[i][j] == 'C')
-				data->img.temp = data->img.coin;
-			if (data->map->grid[i][j] == 'P')
-				data->img.temp = data->img.player;
-			mlx_put_image_to_window(data->mlx, data->win, data->img.temp, j * PX, i * PX);
+			get_img(data, i, j);
 			j++;
 		}
 		i++;

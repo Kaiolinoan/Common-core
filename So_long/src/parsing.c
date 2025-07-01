@@ -6,7 +6,7 @@
 /*   By: klino-an <klino-an@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 14:17:55 by klino-an          #+#    #+#             */
-/*   Updated: 2025/06/29 18:10:31 by klino-an         ###   ########.fr       */
+/*   Updated: 2025/07/01 16:41:25 by klino-an         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,11 @@ static int	count_lines(char *filename)
 	if (fd < 0)
 		return (perror("Erro"), -1);
 	count = 0;
-	while ((line = get_next_line(fd)))
+	while (1)
 	{
+		line = get_next_line(fd);
+		if (!line)
+			break ;
 		count++;
 		free(line);
 	}
@@ -41,8 +44,11 @@ static t_map	*fill_map(t_map *map, char *filename)
 		return (perror("Erro:\n"), NULL);
 	i = 0;
 	line = NULL;
-	while ((line = get_next_line(fd)))
+	while (1)
 	{
+		line = get_next_line(fd);
+		if (!line)
+			break ;
 		if (line[ft_strlen(line) - 1] == '\n')
 			line[ft_strlen(line) - 1] = '\0';
 		map->grid[i++] = line;

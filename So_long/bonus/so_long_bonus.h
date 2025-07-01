@@ -6,12 +6,12 @@
 /*   By: klino-an <klino-an@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 17:07:13 by klino-an          #+#    #+#             */
-/*   Updated: 2025/07/01 11:50:55 by klino-an         ###   ########.fr       */
+/*   Updated: 2025/07/01 18:45:01 by klino-an         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#ifndef SO_LONG_BONUS_H
+# define SO_LONG_BONUS_H
 
 # include "../Libft/libft.h"
 # include <X11/X.h>
@@ -44,11 +44,10 @@ typedef struct images_infos
 
 typedef struct animation_infos
 {
-	t_map *map;
-	int frame_count;
-	char *coins[9];
-	char *player[10];
-	
+	t_map	*map;
+	int		frame_count;
+	char	*coins[9];
+	char	*player[10];
 }			t_anim;
 
 typedef struct data_infos
@@ -61,14 +60,14 @@ typedef struct data_infos
 	t_anim	*anim;
 }			t_data;
 
-
-
 int			check_flood_fill(t_map *map, int x, int y, int collectables);
 int			check_if_map_is_valid(t_map *map, char *filename);
+int			handle_keys(int keycode, void *param);
 int			check_collectables(t_map *map);
 int			prepare_to_flood(t_map *map);
 void		clean_images(t_data *data);
 t_map		*load_map(char *filename);
+int			destroy_game(void *param);
 int			check_player(t_map *map);
 int			check_exit(t_map *map);
 void		clean_map(t_map *map);

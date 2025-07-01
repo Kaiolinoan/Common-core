@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   images.c                                           :+:      :+:    :+:   */
+/*   images_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: klino-an <klino-an@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 12:25:22 by klino-an          #+#    #+#             */
-/*   Updated: 2025/06/30 17:00:26 by klino-an         ###   ########.fr       */
+/*   Updated: 2025/07/01 18:56:09 by klino-an         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 void	images(t_data *data)
 {
@@ -20,17 +20,23 @@ void	images(t_data *data)
 	data->img.coin = mlx_xpm_file_to_image(data->mlx, "assets/Gold/gold5.xpm",
 			&size, &size);
 	data->img.player[0] = mlx_xpm_file_to_image(data->mlx,
-			"assets/Player/player1.xpm", &size, &size);
+			"assets/Player/walking/w1.xpm", &size, &size);
 	data->img.player[1] = mlx_xpm_file_to_image(data->mlx,
-			"assets/Player/walking/test1.xpm", &size, &size);
+			"assets/Player/walking/w2.xpm", &size, &size);
 	data->img.player[2] = mlx_xpm_file_to_image(data->mlx,
-			"assets/Player/walking/test2.xpm", &size, &size);
-	/* data->img.player[3] = mlx_xpm_file_to_image(data->mlx,
-			"assets/Player/player1.xpm", &size, &size);
+			"assets/Player/walking/w3.xpm", &size, &size);
+	data->img.player[3] = mlx_xpm_file_to_image(data->mlx,
+			"assets/Player/walking/w4.xpm", &size, &size);
 	data->img.player[4] = mlx_xpm_file_to_image(data->mlx,
-			"assets/Player/player1.xpm", &size, &size);
+			"assets/Player/walking/w5.xpm", &size, &size);
 	data->img.player[5] = mlx_xpm_file_to_image(data->mlx,
-			"assets/Player/player1.xpm", &size, &size); */
+			"assets/Player/walking/w6.xpm", &size, &size);
+	data->img.player[6] = mlx_xpm_file_to_image(data->mlx,
+			"assets/Player/walking/w7.xpm", &size, &size);
+	data->img.player[7] = mlx_xpm_file_to_image(data->mlx,
+			"assets/Player/walking/w8.xpm", &size, &size);
+	data->img.player[8] = mlx_xpm_file_to_image(data->mlx,
+			"assets/Player/walking/w9.xpm", &size, &size);
 	data->img.wall = mlx_xpm_file_to_image(data->mlx, "assets/Grass/tree.xpm",
 			&size, &size);
 	data->img.floor = mlx_xpm_file_to_image(data->mlx, "assets/Grass/grass.xpm",

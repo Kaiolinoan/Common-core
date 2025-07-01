@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   errors_handling.c                                  :+:      :+:    :+:   */
+/*   errors_handling_bonus.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: klino-an <klino-an@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 17:04:16 by klino-an          #+#    #+#             */
-/*   Updated: 2025/06/26 12:23:01 by klino-an         ###   ########.fr       */
+/*   Updated: 2025/07/01 18:10:21 by klino-an         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include "../so_long_bonus.h"
 
 static int	check_extension(char *filename)
 {

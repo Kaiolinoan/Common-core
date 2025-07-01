@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   errors_handling2.c                                 :+:      :+:    :+:   */
+/*   errors_handling2_bonus.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: klino-an <klino-an@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 17:04:16 by klino-an          #+#    #+#             */
-/*   Updated: 2025/06/25 16:53:19 by klino-an         ###   ########.fr       */
+/*   Updated: 2025/07/01 18:46:38 by klino-an         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include "../so_long_bonus.h"
 
 int	check_player(t_map *map)
 {
@@ -118,7 +118,7 @@ int	prepare_to_flood(t_map *map)
 {
 	t_map	*new_map;
 	int		i;
-	int res;
+	int		res;
 
 	i = 0;
 	new_map = malloc(sizeof(t_map));
@@ -138,5 +138,5 @@ int	prepare_to_flood(t_map *map)
 	new_map->player_y = map->player_y;
 	res = check_flood_fill(new_map, new_map->player_x, new_map->player_y,
 			map->collectables);
-	return(clean_map(new_map), res);
+	return (clean_map(new_map), res);
 }

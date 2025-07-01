@@ -6,7 +6,7 @@
 /*   By: klino-an <klino-an@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 17:07:13 by klino-an          #+#    #+#             */
-/*   Updated: 2025/07/01 13:54:28 by klino-an         ###   ########.fr       */
+/*   Updated: 2025/07/01 16:13:12 by klino-an         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,5 @@ int			put_img(t_data *data);
 void		images(t_data *data);
 int			handle_keys(int keycode, void *param);
 int			destroy_game(void *param);
-
-
 
 #endif
